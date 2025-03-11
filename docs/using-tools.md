@@ -31,6 +31,15 @@ tools = unifai.Tools(api_key='YOUR_AGENT_API_KEY')
 ```
 
   </TabItem>
+  <TabItem value="rs" label="Rust">
+
+```rust
+use unifai_sdk::tools::get_tools;
+
+let (search_tools, call_tool) = get_tools("YOUR_AGENT_API_KEY");
+```
+
+  </TabItem>
 </Tabs>
 
 ## Integrating with LLM
@@ -74,6 +83,21 @@ if response.choices[0].message.get("tool_calls"):
 ```
 
   </TabItem>
+  <TabItem value="rs" label="Rust">
+
+```rust
+let agent = openai_client
+    .agent("gpt-4o")
+    .tool(search_tools)
+    .tool(call_tool)
+    .build();
+let result = agent
+    .prompt("What is trending on Google today?")
+    .await
+    .unwrap();
+```
+
+  </TabItem>
 </Tabs>
 
 Passing the tool calls results back to the LLM might get you more function calls, and you can keep calling the tools until you get a response that doesn't contain any tool calls. For example:
@@ -112,6 +136,49 @@ while True:
     if len(results) == 0:
         break
     messages.extend(results)
+```
+
+  </TabItem>
+  <TabItem value="rs" label="Rust">
+
+```rust
+let mut messages = vec![Message::user("What is trending on Google today?")];
+let result = loop {
+    let response = agent
+        .completion("", messages.clone())
+        .await
+        .unwrap()
+        .send()
+        .await
+        .unwrap();
+    let content = response.choice.first();
+    messages.push(Message::Assistant {
+        content: OneOrMany::one(content.clone()),
+    });
+    match content {
+        AssistantContent::Text(text) => {
+            break text;
+        }
+        AssistantContent::ToolCall(tool_call) => {
+            let tool_result = agent
+                .tools
+                .call(
+                    &tool_call.function.name,
+                    tool_call.function.arguments.to_string(),
+                )
+                .await
+                .unwrap();
+            chat_history.push(Message::User {
+                content: OneOrMany::one(UserContent::ToolResult(ToolResult {
+                    id: tool_call.id,
+                    content: OneOrMany::one(ToolResultContent::Text(Text {
+                        text: tool_result,
+                    })),
+                })),
+            })
+        }
+    }
+};
 ```
 
   </TabItem>

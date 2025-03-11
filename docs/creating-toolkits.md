@@ -39,6 +39,15 @@ toolkit = unifai.Toolkit(api_key='YOUR_TOOLKIT_API_KEY')
 ```
 
 </TabItem>
+<TabItem value="rs" label="Rust">
+
+```rust
+use unifai_sdk::toolkit::*;
+
+let mut toolkit = ToolkitService::new("YOUR_TOOLKIT_API_KEY");
+```
+
+</TabItem>
 </Tabs>
 
 ### Update Toolkit Details
@@ -63,6 +72,19 @@ await toolkit.update_toolkit(
     name="Echo Slam",
     description="What's in, what's out."
 )
+```
+
+</TabItem>
+<TabItem value="rs" label="Rust">
+
+```rust
+service
+    .update_info(ToolkitInfo {
+        name: "Echo Slam".to_string(),
+        description: "What's in, what's out.".to_string(),
+    })
+    .await
+    .unwrap();
 ```
 
 </TabItem>
@@ -112,6 +134,70 @@ def echo(ctx: unifai.ActionContext, payload={}):
 ```
 
 </TabItem>
+<TabItem value="rs" label="Rust">
+
+```rust
+use thiserror::Error;
+use unifai_sdk::{
+    serde::{self, Deserialize, Serialize},
+    serde_json::json,
+    tokio,
+    toolkit::*,
+};
+
+struct EchoSlam;
+
+#[derive(Serialize, Deserialize)]
+#[serde(crate = "serde")]
+struct EchoSlamArgs {
+    pub content: String,
+}
+
+#[derive(Debug, Error)]
+#[error("Echo error")]
+struct EchoSlamError;
+
+impl Action for EchoSlam {
+    const NAME: &'static str = "echo";
+
+    type Error = EchoSlamError;
+    type Args = EchoSlamArgs;
+    type Output = String;
+
+    async fn definition(&self) -> ActionDefinition {
+        ActionDefinition {
+            description: "Echo the message".to_string(),
+            payload: json!({
+                "content": {
+                    "type": "string",
+                    "description": "The message to echo"
+                }
+            }),
+            payment: None,
+        }
+    }
+
+    async fn call(
+        &self,
+        ctx: ActionContext,
+        params: ActionParams<Self::Args>,
+    ) -> Result<ActionResult<Self::Output>, Self::Error> {
+        let output = format!(
+            "You are agent <${}>, you said \"{}\".",
+            ctx.agent_id, params.payload.content
+        );
+
+        Ok(ActionResult {
+            payload: output,
+            payment: None,
+        })
+    }
+}
+
+toolkit.add_action(EchoSlam);
+```
+
+</TabItem>
 </Tabs>
 
 ### Start the Toolkit
@@ -130,6 +216,14 @@ await toolkit.run();
 
 ```python
 asyncio.run(toolkit.run())
+```
+
+</TabItem>
+<TabItem value="rs" label="Rust">
+
+```rust
+let runner = toolkit.start().await.unwrap();
+let _ = runner.await.unwrap();
 ```
 
 </TabItem>
@@ -200,6 +294,88 @@ def echo(ctx: unifai.ActionContext, payload={}):
 
 # Start serving the toolkit
 asyncio.run(toolkit.run())
+```
+
+  </TabItem>
+  <TabItem value="rs" label="Rust">
+
+```rust
+use thiserror::Error;
+use unifai_sdk::{
+    serde::{self, Deserialize, Serialize},
+    serde_json::json,
+    tokio,
+    toolkit::*,
+};
+
+struct EchoSlam;
+
+#[derive(Serialize, Deserialize)]
+#[serde(crate = "serde")]
+struct EchoSlamArgs {
+    pub content: String,
+}
+
+#[derive(Debug, Error)]
+#[error("Echo error")]
+struct EchoSlamError;
+
+impl Action for EchoSlam {
+    const NAME: &'static str = "echo";
+
+    type Error = EchoSlamError;
+    type Args = EchoSlamArgs;
+    type Output = String;
+
+    async fn definition(&self) -> ActionDefinition {
+        ActionDefinition {
+            description: "Echo the message".to_string(),
+            payload: json!({
+                "content": {
+                    "type": "string",
+                    "description": "The message to echo",
+                    "required": true
+                }
+            }),
+            payment: None,
+        }
+    }
+
+    async fn call(
+        &self,
+        ctx: ActionContext,
+        params: ActionParams<Self::Args>,
+    ) -> Result<ActionResult<Self::Output>, Self::Error> {
+        let output = format!(
+            "You are agent <${}>, you said \"{}\".",
+            ctx.agent_id, params.payload.content
+        );
+
+        Ok(ActionResult {
+            payload: output,
+            payment: None,
+        })
+    }
+}
+
+#[tokio::main]
+async fn main() {
+    tracing_subscriber::fmt().init();
+
+    let mut toolkit = ToolkitService::new("YOUR_TOOLKIT_API_KEY");
+
+    let info = ToolkitInfo {
+        name: "Echo Slam".to_string(),
+        description: "What's in, what's out.".to_string(),
+    };
+
+    toolkit.update_info(info).await.unwrap();
+
+    toolkit.add_action(EchoSlam);
+
+    let runner = toolkit.start().await.unwrap();
+    let _ = runner.await.unwrap();
+}
 ```
 
   </TabItem>

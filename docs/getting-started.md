@@ -32,6 +32,13 @@ pip install unifai-sdk
 ```
 
   </TabItem>
+  <TabItem value="rs" label="Rust">
+
+```bash
+cargo add unifai-sdk
+```
+
+  </TabItem>
 </Tabs>
 
 ## API Keys
