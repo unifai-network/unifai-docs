@@ -17,14 +17,12 @@ Click the **Sign in** button in the top right corner and connect your Telegram a
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-
-
-
-
-3. <kbd>**Create a**</kbd><kbd>**&#x20;**</kbd><kbd>**Strategy Execution Agent**</kbd>
+3. <kbd>**Create a Strategy Execution Agent**</kbd>
 4.
 
-    <figure><img src="../../.gitbook/assets/strattttt.jpg" alt=""><figcaption></figcaption></figure>
+```
+<figure><img src="../../.gitbook/assets/strattttt.jpg" alt=""><figcaption></figcaption></figure>
+```
 
 **You can choose to use any available template or create a custom strategy and you can write your prompt** by describing the strategy you want to automate to the Strategy Creator Agent using natural language.
 
@@ -63,12 +61,10 @@ If the selected pool satisfies all conditions, and the current number of positio
 Apart from take-profit, stop-loss, and out-of-range scenarios, do not remove liquidity under any other conditions.
 ```
 
-
-
 4. <kbd>**Wallet Setup**</kbd>
    * **Create a Wallet** Click the **Create Wallet** button to generate a secure, Privy-powered crypto wallet. You can choose a **Solana** or **EVM** wallet and give it a name that matches your strategy.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 or create wallet directly when you create the agent
 
@@ -81,14 +77,12 @@ or create wallet directly when you create the agent
 
     * For an automated Meteora or meme coin strategy on the Solana network, choose **Solana**.
 
-    You can deposit funds from an existing wallet or a centralized exchange (CEX). \
-    [⚠️ **Always double-check the wallet address and blockchain network before transferring funds. When in doubt, start with a small test transaction.**](#user-content-fn-1)[^1]
+    You can deposit funds from an existing wallet or a centralized exchange (CEX).\
+    ⚠️ **Always double-check the wallet address and blockchain network before transferring funds. When in doubt, start with a small test transaction.**
 
 <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 * **Verify Your Balance** After depositing, wait for the blockchain transaction to be confirmed. You can then check your wallet's asset balance on the **Wallet** page.
-
-
 
 5. <kbd>**Managing Strategies**</kbd>
 
@@ -96,7 +90,7 @@ or create wallet directly when you create the agent
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-* Fine-Tuning Strategies On the Strategy page, you can check your strategy's status and edit or pause it.  \
+* Fine-Tuning Strategies On the Strategy page, you can check your strategy's status and edit or pause it.\
   You can edit and fine-tune your strategies on the Strategy page. Currently, you can only edit the Instructions, not the trigger conditions. If you need to change the trigger, stop the current strategy and create a new one.
 
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
@@ -111,22 +105,6 @@ You can also see your current **open positions**. If needed, you can manually cl
 
 <figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-#### <kbd>**6. Fees**</kbd>
-
-During the Beta period, UnifAI is waiving all transaction and agent runtime fees for a limited time.
-
-#### <kbd>7. Competition Results Calculation</kbd>
-
-The **PnL (Profit and Loss) percentage** is determined by the formula:
-
-```jsx
-PnL%=(Final Asset Balance/Total Deposits)−1
-```
-
-The **Final Asset Balance** is the sum of your LP (Liquidity Pool) position value, token value, and the rent value of your LP positions.
-
-#### <kbd>8. Constraints</kbd>
+6. <kbd>**C0ntstraints**</kbd>
 
 The minimum execution interval for a single strategy is currently **15 minutes**.
-
-[^1]: 

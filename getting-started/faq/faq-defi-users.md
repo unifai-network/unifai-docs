@@ -1,8 +1,9 @@
 ---
 description: This is a segment of frequently asked questions by all pros/newbie defi users
+icon: comments-question-check
 ---
 
-# ❓ FAQ - DeFi Users
+# FAQ - DeFi Users
 
 <details>
 
@@ -41,12 +42,9 @@ UniFAI simplifies decision-making, automates strategies, allows copying of prove
 <summary><strong>Who is UniFAI designed for?</strong></summary>
 
 * **DeFi Professionals:** Automate complex strategies to save time and optimize returns.
-
-- **DeFi Newcomers:** Learn and experiment with AI agents while observing or replicating expert strategies.
-
+* **DeFi Newcomers:** Learn and experiment with AI agents while observing or replicating expert strategies.
 * **AI Enthusiasts:** Explore autonomous AI agents in the DeFi space.
-
-- **AI/DeFi Developers:** Build, deploy, and scale autonomous agents using UniFAI’s SDK.
+* **AI/DeFi Developers:** Build, deploy, and scale autonomous agents using UniFAI’s SDK.
 
 </details>
 
@@ -55,8 +53,7 @@ UniFAI simplifies decision-making, automates strategies, allows copying of prove
 <summary><strong>How do I access the Task Agent?</strong></summary>
 
 * Go to the [Agents page](https://chat.unifai.network) and click on Task Creator.
-
-- Sign in by connecting your Telegram account.
+* Sign in by connecting your Telegram account.
 
 </details>
 
@@ -65,8 +62,7 @@ UniFAI simplifies decision-making, automates strategies, allows copying of prove
 <summary><strong>Can you give examples of strategies?</strong></summary>
 
 * **Meteora DLMM Automation:** Automates liquidity pool management based on multiple criteria like FDV, TVL, fees, token age, and price changes.
-
-- **Automated Tweet-Based Strategy:** Periodically checks tweets for bullish token mentions and automatically buys tokens if criteria are met.
+* **Automated Tweet-Based Strategy:** Periodically checks tweets for bullish token mentions and automatically buys tokens if criteria are met.
 
 </details>
 
@@ -115,12 +111,9 @@ Yes, you can edit the instructions via the Task page. To change triggers, you mu
 <summary><strong>What are task statuses?</strong></summary>
 
 * **Active:** Currently running
-
-- **Completed:** Finished one-time task
-
+* **Completed:** Finished one-time task
 * **Canceled:** Stopped by user (cannot be restarted)
-
-- **Expired:** Scheduled end time has passed
+* **Expired:** Scheduled end time has passed
 
 </details>
 

@@ -7,7 +7,9 @@
 * [Guide - Tutorials](getting-started/guide-tutorials/README.md)
   * [📰 How To Create A Strategy](getting-started/guide-tutorials/publish-your-docs.md)
   * [📰 How To Copy A Strategy](getting-started/guide-tutorials/how-to-copy-a-strategy.md)
-* [❓ FAQ - DeFi Users](getting-started/faq-defi-users.md)
+* [❓ FAQ](getting-started/faq/README.md)
+  * [FAQ - DeFi Users](getting-started/faq/faq-defi-users.md)
+  * [FAQ - Polymarket Strategies](getting-started/faq/faq-polymarket-strategies.md)
 
 ## FOR DEVELOPERS
 
