@@ -71,8 +71,10 @@ or create wallet directly when you create the agent
 <figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 * About the Wallet Private Keys
-  * At present, you can already withdraw any assets from the wallet. Our current solution is based on a custodial wallet service (Privy), which does not support exporting private keys for API-based wallets. The private keys are securely stored, and even our team does not have access to them.
-  * In the future, we plan to introduce functionality that will allow you to manage your Agent Wallet assets directly through the conversation interface.
+  * About the Wallet Private Keys - Exporting Private keys
+    * Go to - [https://chat.unifai.network/c/new?t=managewallets](https://chat.unifai.network/c/new?t=managewallets)
+    * Click on "private key" next to the wallet you would like to export
+    * Click on Reveal private key
 *   **Fund Your Wallet** On the **Deposit** page, send funds to your new wallet address. **Make sure you select the correct blockchain network.** For example:
 
     * For an automated Meteora or meme coin strategy on the Solana network, choose **Solana**.
