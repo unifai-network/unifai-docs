@@ -26,3 +26,8 @@
 * [🌐 Social & Community Links](resources/social-and-community-links.md)
 * [🎚️ Branding Guidelines](resources/branding-guidelines.md)
 * [👍 Our Community Voices](resources/our-community-voices.md)
+
+## Tokenomics
+
+* [⛓️ Distribution and Vestin](tokenomics/distribution-and-vestin.md)
+* [🛠️ Token Utility](tokenomics/token-utility.md)
