@@ -1,6 +1,6 @@
-# ⛓️ Distribution and Vestin
+# ⛓️ Distribution and Vesting
 
-### [$UAI](https://x.com/search?q=%24UAI\&src=cashtag_click)Tokenomics and Vesting Breakdown
+### [$UAI](https://x.com/search?q=%24UAI\&src=cashtag_click) Tokenomics and Vesting Breakdown
 
 UnifAI’s native token,[$UAI](https://x.com/search?q=%24UAI\&src=cashtag_click), is designed as the backbone of a sustainable, long-term ecosystem, aligning the interests of developers, community members, and investors alike. Its allocation and vesting structure are carefully phased to reward commitment and active participation, with investors and team tokens gradually released over multiple years, protocol and treasury funds supporting ongoing development, and the community allocation combining immediate TGE unlocks with long-term monthly growth. Token Allocation and Vesting [$UAI](https://x.com/search?q=%24UAI\&src=cashtag_click)tokenomics balances early investor confidence, team and advisor incentives, ecosystem growth, and community engagement.&#x20;
 
