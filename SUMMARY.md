@@ -29,5 +29,5 @@
 
 ## Tokenomics
 
-* [⛓️ Distribution and Vestin](tokenomics/distribution-and-vestin.md)
+* [⛓️ Distribution and Vesting](tokenomics/distribution-and-vesting.md)
 * [🛠️ Token Utility](tokenomics/token-utility.md)
