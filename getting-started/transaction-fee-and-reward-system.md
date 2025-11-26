@@ -13,15 +13,15 @@ When you use UnifAI, some strategies have **small platform fees**:
 
 * **Meteora strategies:**
   * Swap fee: 0.5%
-  * Claimed fee: 2% (usually in SOL or USDC, based on the Quote token)
-* **On-chain swaps** (Solana, BSC, Base): 0.5%
+  * Claimed fee: 5% (usually in SOL, based on the Quote token)
+* **On-chain swaps** (Solana, BSC, Base, Polygon): 0.5%
 * **Delta Neutral, Perpetual Trading, Polymarket:** 0%
 
 **VIP users** automatically get discounts based on either their **deposit amount** or **monthly trading volume**, whichever is higher. The higher your VIP level, the bigger the discount.
 
 | Base Fee          | User Fee                  |
 | ----------------- | ------------------------- |
-| Meteora           | Swap 0.5%, Claimed Fee 2% |
+| Meteora           | Swap 0.5%, Claimed Fee 5% |
 | On-chain Swap     | Swap 0.5%                 |
 | Delta Neutral     | 0%                        |
 | Perpetual Trading | 0%                        |
