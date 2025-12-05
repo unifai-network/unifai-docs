@@ -18,11 +18,6 @@ Click the **Sign in** button in the top right corner and connect your Telegram a
 <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 3. <kbd>**Create a Strategy Execution Agent**</kbd>
-4.
-
-```
-<figure><img src="../../.gitbook/assets/strattttt.jpg" alt=""><figcaption></figcaption></figure>
-```
 
 **You can choose to use any available template or create a custom strategy and you can write your prompt** by describing the strategy you want to automate to the Strategy Creator Agent using natural language.
 
