@@ -27,10 +27,6 @@ When you use UnifAI, some strategies have **small platform fees**:
 | Perpetual Trading | 0%                        |
 | Polymarket        | 0%                        |
 
-#### VIP Discounts
-
-<table><thead><tr><th>VIP Level</th><th>Name</th><th width="253.60009765625">Deposit Requirement (USDT)</th><th width="115.2000732421875">And/Or</th><th>Monthly Trading Volume (USDT)</th><th>Fee Discount</th></tr></thead><tbody><tr><td>VIP 1</td><td>Basic</td><td>0</td><td>or</td><td>0</td><td>0%</td></tr><tr><td>VIP 2</td><td>Explorer</td><td>500+</td><td>or</td><td>50,000</td><td>5%</td></tr><tr><td>VIP 3</td><td>Strategist</td><td>1,000+</td><td>or</td><td>100,000</td><td>10%</td></tr><tr><td>VIP 4</td><td>Goat</td><td>5,000+</td><td>or</td><td>500,000</td><td>20%</td></tr><tr><td>VIP 5</td><td>Architect</td><td>20,000+</td><td>or</td><td>2,000,000</td><td>30%</td></tr><tr><td>VIP 6</td><td>Master</td><td>100,000+</td><td>or</td><td>10,000,000</td><td>40%</td></tr><tr><td>VIP 7</td><td>Oracle</td><td>1,000,000+</td><td>or</td><td>100,000,000</td><td>50%</td></tr></tbody></table>
-
 ***
 
 ### Referral Commissions
@@ -66,8 +62,8 @@ You can **invite friends** using their personal link via \[to be updated]
 
 ### Strategy Creator Rewards
 
-* If you create a strategy, you earn **20% of the fees** from all wallets copying it.
+* If you create a strategy, you earn **30% of the fees** from all wallets copying it.
 * These rewards **stack with referral commissions**.
-  * Example: 10% referral + 20% copy-trading reward if a user registers via your link and copies your strategy.
+  * Example: 10% referral + 30% copy-trading reward if a user registers via your link and copies your strategy.
 * Rewards can be settled **daily or weekly**.
 * Strategy creators can **view followers** and **claim USDC/SOL** via the same interface used for referral rewards.

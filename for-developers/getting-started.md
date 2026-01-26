@@ -9,7 +9,7 @@ description: >-
 ### Prerequisites <a href="#prerequisites" id="prerequisites"></a>
 
 * Node.js (for JavaScript/TypeScript) or Python installed
-* An account at [UnifAI](https://app.unifai.network/) to obtain your API keys
+* An account at [UnifAI Console](https://console.unifai.network/) to obtain your API keys
 
 ### Installation <a href="#installation" id="installation"></a>
 

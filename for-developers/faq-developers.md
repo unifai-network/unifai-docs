@@ -4,7 +4,7 @@
 
 <summary>How do I get my API keys?</summary>
 
-* Visit [UnifAI](https://app.unifai.network/) to register and obtain your Agent API key (for tools) and Toolkit API key (for creating toolkits).
+* Visit [UnifAI Console](https://console.unifai.network/) to register and obtain your Agent API key (for tools) and Toolkit API key (for creating toolkits).
 
 </details>
 
@@ -66,4 +66,3 @@
 * Review the documentation for detailed guides and examples
 
 </details>
-

@@ -9,7 +9,7 @@ description: >-
 
 ### Overview <a href="#overview" id="overview"></a>
 
-A toolkit is a collection of tools that you register and serve to agents dynamically. It requires a **Toolkit API Key** — which you can get for free from [UnifAI](https://app.unifai.network/).
+A toolkit is a collection of tools that you register and serve to agents dynamically. It requires a **Toolkit API Key** — which you can get for free from [UnifAI Console](https://console.unifai.network/).
 
 ### Toolkit Creation and Configuration <a href="#toolkit-creation-and-configuration" id="toolkit-creation-and-configuration"></a>
 
