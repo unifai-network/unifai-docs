@@ -276,16 +276,20 @@ EXTRA_CSS = """/* Tuned to match the live GitBook site (docs.unifai.network).
 .md-header { box-shadow: none; border-bottom: 1px solid var(--md-default-fg-color--lightest); }
 .md-footer-meta { border-top: 1px solid var(--md-default-fg-color--lightest); }
 
-/* Headings: bold + full-strength text color (Material defaults to light-300 gray) */
+/* Heading scale measured from GitBook. NOTE: Material's root font-size is 20px,
+   so heading sizes are set in px on purpose — rem would render 1.25x too large. */
 .md-typeset h1 {
-  font-size: 2.25rem;      /* 36px */
-  line-height: 1.25;       /* ~45px */
-  font-weight: 700;
-  color: var(--md-default-fg-color);
-  letter-spacing: 0;
+  font-size: 36px; line-height: 1.25; font-weight: 700;
+  color: var(--md-default-fg-color); letter-spacing: 0; margin: 0 0 .6rem;
 }
-.md-typeset h2 { font-weight: 700; color: var(--md-default-fg-color); }
-.md-typeset h3 { font-weight: 600; color: var(--md-default-fg-color); }
+.md-typeset h2 { font-size: 30px; line-height: 1.2;  font-weight: 600; color: var(--md-default-fg-color); }
+.md-typeset h3 { font-size: 24px; line-height: 1.33; font-weight: 600; color: var(--md-default-fg-color); }
+.md-typeset h4 { font-size: 20px; font-weight: 600; color: var(--md-default-fg-color); }
+
+/* Body + list rhythm measured from GitBook (paragraphs 16/26, list items 16/22) */
+.md-typeset p  { line-height: 1.625; }
+.md-typeset li { line-height: 1.375; }
+.md-typeset code { font-size: .9em; }
 
 /* GitBook article header: section eyebrow above H1 + description subtitle below
    (both injected by hooks/gitbook_shim.py) */
@@ -318,8 +322,8 @@ EXTRA_CSS = """/* Tuned to match the live GitBook site (docs.unifai.network).
 .md-typeset .tabbed-set > input:checked + label { color: var(--md-default-fg-color); font-weight: 500; }
 .md-typeset .tabbed-labels::before { display: none; }   /* GitBook active tab has no underline */
 
-/* Content column width — measured: GitBook text column ~768px (Material default is narrower) */
-.md-grid { max-width: 66rem; }
+/* Content column width — measured: GitBook text column 768px */
+.md-grid { max-width: 65rem; }
 
 /* GitBook-style floating theme switcher (bottom-right); Material's header toggle is hidden */
 .md-header [data-md-component="palette"] { display: none; }

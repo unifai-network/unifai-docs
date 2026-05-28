@@ -11,7 +11,7 @@ theme:
   favicon: gitbook/assets/logo-single.png
   font:
     text: Inter
-    code: JetBrains Mono
+    code: IBM Plex Mono
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
