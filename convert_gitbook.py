@@ -111,7 +111,14 @@ def strip_gitbook_frontmatter_keys(text):
     if end is None:
         return text
     fm = [ln for ln in parts[1:end] if not re.match(r'^\s*icon\s*:', ln)]
-    return '\n'.join(['---'] + fm + ['---'] + parts[end + 1:])
+    body = parts[end + 1:]
+    # If nothing substantive remains, drop the frontmatter entirely. An empty
+    # "---\n---" block makes MkDocs lose the page's H1 and title it "Index".
+    if not any(ln.strip() for ln in fm):
+        while body and not body[0].strip():
+            body.pop(0)
+        return '\n'.join(body)
+    return '\n'.join(['---'] + fm + ['---'] + body)
 
 
 # GitBook page slugs (as they appear in absolute docs.unifai.network links)
