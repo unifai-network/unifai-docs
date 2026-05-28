@@ -248,7 +248,8 @@ def transform(text, relpath):
     return fix_linebreaks('\n'.join(out))
 
 
-EXTRA_CSS = """/* Tuned to match the live GitBook site (docs.unifai.network).
+EXTRA_CSS = """/* UnifAI Docs · auto-built on Cloudflare Pages from main */
+/* Tuned to match the live GitBook site (docs.unifai.network).
    Text colors flow through Material's scheme-aware --md-* tokens (so dark mode
    stays readable); only the token VALUES are pinned per scheme. Light-mode
    values were measured from the live DOM. */
