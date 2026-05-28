@@ -14,7 +14,7 @@ description: We unite as one!!!
 
 [Github](https://tr.ee/PnOHHKSUVt)
 
-[Medium](broken-reference)
+[Medium](https://unifainetwork.medium.com/)
 
 [Reddit](https://www.reddit.com/r/unifai_community/)
 
