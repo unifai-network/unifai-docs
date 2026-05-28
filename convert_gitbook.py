@@ -13,29 +13,78 @@ DOCS = os.path.join(ROOT, "docs")
 HINT_MAP = {"info": "info", "warning": "warning", "danger": "danger",
             "success": "success", "note": "note", "tip": "tip"}
 
-# Source markdown files (relative paths) taken from SUMMARY.md structure.
-MD_FILES = [
-    "README.md",
-    "getting-started/transaction-fee-and-reward-system.md",
-    "getting-started/guide-tutorials/README.md",
-    "getting-started/guide-tutorials/publish-your-docs.md",
-    "getting-started/guide-tutorials/how-to-copy-a-strategy.md",
-    "getting-started/faq/README.md",
-    "getting-started/faq/faq-defi-users.md",
-    "getting-started/faq/faq-polymarket-strategies.md",
-    "for-developers/getting-started.md",
-    "for-developers/editor.md",
-    "for-developers/understanding-tool-types.md",
-    "for-developers/markdown.md",
-    "for-developers/creating-toolkits.md",
-    "for-developers/agent-documentation.md",
-    "for-developers/faq-developers.md",
-    "resources/social-and-community-links.md",
-    "resources/branding-guidelines.md",
-    "resources/our-community-voices.md",
-    "tokenomics/distribution-and-vesting.md",
-    "tokenomics/token-utility.md",
-]
+# SUMMARY.md is the single source of truth for both the file list and the nav.
+SUMMARY_MD = os.path.join(ROOT, "SUMMARY.md")
+
+
+def parse_summary(path):
+    """Parse GitBook SUMMARY.md into nav sections: a list of
+    {label, items:[{title, path, children:[...]}]} preserving order + nesting."""
+    sections, cur, stack = [], None, []
+    with open(path, encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            m = re.match(r'^##\s+(.*\S)\s*$', line)          # "## Section"
+            if m:
+                cur = {"label": m.group(1).strip(), "items": []}
+                sections.append(cur)
+                stack = []
+                continue
+            m = re.match(r'^(\s*)[*-]\s+\[(.*?)\]\((.*?)\)\s*$', line)  # "* [t](p)"
+            if m and cur is not None:
+                indent = len(m.group(1))
+                node = {"title": m.group(2).strip(), "path": m.group(3).strip(), "children": []}
+                while stack and stack[-1][0] >= indent:
+                    stack.pop()
+                (stack[-1][1]["children"] if stack else cur["items"]).append(node)
+                stack.append((indent, node))
+    return sections
+
+
+def collect_files(sections):
+    """Ordered list of source .md paths referenced by SUMMARY.md."""
+    files = []
+
+    def walk(items):
+        for it in items:
+            files.append(it["path"])
+            walk(it["children"])
+
+    for sec in sections:
+        walk(sec["items"])
+    return files
+
+
+def _navpath(p):
+    return "index.md" if p == "README.md" else p
+
+
+def _yaml_key(label):
+    if re.search(r'''[:#&*!|>%@"'{}\[\],]''', label) or label[:1] in "-? ":
+        return '"%s"' % label.replace("\\", "\\\\").replace('"', '\\"')
+    return label
+
+
+def build_nav_yaml(sections):
+    """Render the nav sections as a mkdocs.yml `nav:` block. Leaf pages use bare
+    paths so their titles auto-derive from each page's H1 (matching GitBook);
+    section + sub-section labels come from SUMMARY.md."""
+    lines = ["nav:"]
+
+    def emit(items, indent):
+        pad = " " * indent
+        for it in items:
+            if it["children"]:                                  # sub-section
+                lines.append("%s- %s:" % (pad, _yaml_key(it["title"])))
+                lines.append("%s    - %s" % (pad, _navpath(it["path"])))  # its index page
+                emit(it["children"], indent + 4)
+            else:                                               # leaf page
+                lines.append("%s- %s" % (pad, _navpath(it["path"])))
+
+    for sec in sections:
+        lines.append("  - %s:" % _yaml_key(sec["label"]))
+        emit(sec["items"], 6)
+    return "\n".join(lines)
 
 re_tabs      = re.compile(r'^\s*\{%\s*tabs\s*%\}\s*$')
 re_endtabs   = re.compile(r'^\s*\{%\s*endtabs\s*%\}\s*$')
@@ -346,11 +395,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 def main():
+    sections = parse_summary(SUMMARY_MD)
+    md_files = collect_files(sections)
+
     if os.path.isdir(DOCS):
         shutil.rmtree(DOCS)
     os.makedirs(DOCS)
 
-    for rel in MD_FILES:
+    for rel in md_files:
         src = os.path.join(ROOT, rel)
         if not os.path.exists(src):
             print("  MISSING:", rel)
@@ -389,7 +441,21 @@ def main():
         f.write(JS_TOGGLE)
     print("  wrote js/theme-toggle.js")
 
-    print("Done. %d files." % len(MD_FILES))
+    # Splice the nav (generated from SUMMARY.md) into mkdocs.yml between the
+    # NAV-START / NAV-END markers, so SUMMARY.md is the single nav source.
+    mk_path = os.path.join(ROOT, "mkdocs.yml")
+    if os.path.exists(mk_path):
+        with open(mk_path, encoding="utf-8") as f:
+            mk = f.read()
+        block = ("# NAV-START — auto-generated from SUMMARY.md by convert_gitbook.py; "
+                 "do not edit by hand.\n" + build_nav_yaml(sections) + "\n# NAV-END")
+        mk2 = re.sub(r"# NAV-START.*?# NAV-END", block, mk, flags=re.S)
+        if mk2 != mk:
+            with open(mk_path, "w", encoding="utf-8") as f:
+                f.write(mk2)
+        print("  nav: %d sections from SUMMARY.md -> mkdocs.yml" % len(sections))
+
+    print("Done. %d files." % len(md_files))
 
 
 if __name__ == "__main__":

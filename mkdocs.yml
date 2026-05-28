@@ -65,6 +65,7 @@ plugins:
 hooks:
   - hooks/gitbook_shim.py
 
+# NAV-START — auto-generated from SUMMARY.md by convert_gitbook.py; do not edit by hand.
 nav:
   - Getting Started:
       - index.md
@@ -73,11 +74,11 @@ nav:
           - getting-started/guide-tutorials/README.md
           - getting-started/guide-tutorials/publish-your-docs.md
           - getting-started/guide-tutorials/how-to-copy-a-strategy.md
-      - FAQ:
+      - ❓ FAQ:
           - getting-started/faq/README.md
           - getting-started/faq/faq-defi-users.md
           - getting-started/faq/faq-polymarket-strategies.md
-  - For Developers:
+  - FOR DEVELOPERS:
       - for-developers/getting-started.md
       - for-developers/editor.md
       - for-developers/understanding-tool-types.md
@@ -92,3 +93,4 @@ nav:
   - Tokenomics:
       - tokenomics/distribution-and-vesting.md
       - tokenomics/token-utility.md
+# NAV-END
