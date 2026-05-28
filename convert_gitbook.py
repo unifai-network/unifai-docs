@@ -307,6 +307,14 @@ EXTRA_CSS = """/* Tuned to match the live GitBook site (docs.unifai.network).
   text-transform: uppercase; font-size: 12px; font-weight: 600;
   letter-spacing: .3px; color: var(--md-default-fg-color);
 }
+/* Nav links — measured from GitBook: 14px / 20px line-height / 6px vertical padding.
+   (The 12px section-label rule above is more specific, so labels stay 12px.) */
+.md-nav--primary .md-nav__link {
+  font-size: 14px; line-height: 20px;
+  padding-top: 6px; padding-bottom: 6px;
+}
+/* roomier separation before each top-level section, like GitBook */
+.md-nav--primary > .md-nav__list > .md-nav__item--section { margin-top: 1.1rem; }
 .md-nav__link--active,
 .md-nav__link--active:hover,
 .md-nav--secondary .md-nav__link--active { color: var(--md-accent-fg-color); }
@@ -315,6 +323,10 @@ EXTRA_CSS = """/* Tuned to match the live GitBook site (docs.unifai.network).
 .md-nav--secondary .md-nav__title {
   text-transform: none; font-size: 14px; font-weight: 400;
   letter-spacing: normal; color: var(--md-default-fg-color--light);
+}
+/* Right TOC links — match GitBook's roomier rhythm: 20px line / 5px padding */
+.md-nav--secondary .md-nav__link {
+  line-height: 20px; padding-top: 5px; padding-bottom: 5px;
 }
 
 /* Tabs — measured: gray inactive / strong active, weight 500, 14px, NO underline */
